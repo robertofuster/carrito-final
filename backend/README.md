@@ -22,8 +22,6 @@
 - Estructura base creada
 - Conexión Mongo configurada
         mongodb+srv://catalogoUser:<db_password>@cluster0.o7wzzho.mongodb.net/?appName=Cluster0
-        mongodb+srv://catalogoUser:Catalogo_2026@cluster0.o7wzzho.mongodb.net/catalogoDB?appName=Cluster0
-        catalogoUser - Catalogo_2026
 - Servidor funcionanado y conectado a Mongo
 - Middleware propio
 - Control de acceso
