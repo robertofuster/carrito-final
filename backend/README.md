@@ -34,12 +34,10 @@ A. Crear repositorio en GIT
 B. Crear los .gitignore
 C. Clonar repositorio
 
-git init
-git commit -m "Inicio Proyecto"
-git branch -M main
-git remote add origin https://github.com/robertofuster/catalogo.git
-git push -u origin main
-
+git add .
+git commit -m "mensaje claro"
+git pull origin main --rebase
+git push
 
 
 ## Modelo de pruebas
