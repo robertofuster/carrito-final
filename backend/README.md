@@ -6,6 +6,7 @@
 - Express
 - MongoDB Atlas
 - Mongoose
+- multer
 
 ## Puerto
 3000
@@ -30,17 +31,11 @@
 
 ## Resguardo GIT
 A. Crear repositorio en GIT
-B. 
+B. Crear los .gitignore
 C. Clonar repositorio
 
-git --version
-
-
-
-echo "# catalogo" >> README.md
 git init
-git add README.md
-git commit -m "first commit"
+git commit -m "Inicio Proyecto"
 git branch -M main
 git remote add origin https://github.com/robertofuster/catalogo.git
 git push -u origin main
@@ -52,3 +47,4 @@ git push -u origin main
     prueba de Get y Post de "Categorias"
     Prueba de Get y Post de "Producto" (_id: 69a5067a1c3769b3c7d74127)
     Prueba de Middleware propio -> al crear la Key usuario funciona ok
+    Prueba de subida de imagen

@@ -9,7 +9,12 @@ exports.createProduct = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const product = new Product(req.body);
+    const productData = {
+      ...req.body,
+      image: req.file ? `/uploads/${req.file.filename}` : null
+    };
+
+    const product = new Product(productData);
     await product.save();
 
     res.status(201).json(product);

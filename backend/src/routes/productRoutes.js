@@ -3,6 +3,7 @@ const { body } = require('express-validator');
 const router = express.Router();
 const productController = require('../controllers/productController');
 const adminMiddleware = require('../middlewares/adminMiddleware');
+const upload = require('../middlewares/uploadMiddleware');
 
 const validateProduct = [
   body('name')
@@ -18,7 +19,7 @@ const validateProduct = [
     .withMessage('La categoría es obligatoria')
 ];
 
-router.post('/', adminMiddleware, validateProduct, productController.createProduct);
+router.post('/', adminMiddleware, upload.single('image'), validateProduct, productController.createProduct);
 router.get('/', productController.getProducts);
 
 module.exports = router;

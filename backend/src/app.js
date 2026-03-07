@@ -4,6 +4,7 @@ const morgan = require('morgan');
 
 const categoryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
+const externalRoutes = require('./routes/externalRoutes');
 
 const app = express();
 
@@ -19,5 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+app.use('/uploads', express.static('uploads'));
+app.use('/api/external', externalRoutes);
 
 module.exports = app;
