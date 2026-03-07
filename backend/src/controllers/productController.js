@@ -36,3 +36,22 @@ exports.getProducts = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getProductsByCategory = async (req, res) => {
+  try {
+
+    const categoryId = req.params.id;
+
+    const products = await Product.find({ category: categoryId })
+      .populate('category', 'name');
+
+    res.json(products);
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+};

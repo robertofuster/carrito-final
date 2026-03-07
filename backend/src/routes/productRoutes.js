@@ -21,5 +21,6 @@ const validateProduct = [
 
 router.post('/', adminMiddleware, upload.single('image'), validateProduct, productController.createProduct);
 router.get('/', productController.getProducts);
+router.get('/category/:id', productController.getProductsByCategory);
 
 module.exports = router;
