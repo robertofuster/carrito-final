@@ -1,11 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 const API = "http://localhost:3000/api";
 
 let listaProductos = [];
 
 
-// ==============================
+// =============================
 // CARGAR CATEGORIAS
-// ==============================
+// =============================
 
 async function cargarCategorias(){
 
@@ -15,11 +17,21 @@ async function cargarCategorias(){
     const contenedor = document.getElementById("categorias");
     contenedor.innerHTML = "";
 
+    const botonTodos = document.createElement("button");
+    botonTodos.className = "btn btn-secondary me-2 mb-2";
+    botonTodos.textContent = "Todos";
+
+    botonTodos.onclick = () => {
+        mostrarProductos(listaProductos);
+    };
+
+    contenedor.appendChild(botonTodos);
+
     categorias.forEach(cat => {
 
         const boton = document.createElement("button");
 
-        boton.className = "btn btn-outline-primary me-2 mb-2";
+        boton.className = "btn btn-primary me-2 mb-2";
         boton.textContent = cat.name;
 
         boton.onclick = () => {
@@ -33,9 +45,9 @@ async function cargarCategorias(){
 }
 
 
-// ==============================
-// CARGAR TODOS LOS PRODUCTOS
-// ==============================
+// =============================
+// CARGAR PRODUCTOS
+// =============================
 
 async function cargarProductos(){
 
@@ -47,9 +59,9 @@ async function cargarProductos(){
 }
 
 
-// ==============================
-// CARGAR PRODUCTOS POR CATEGORIA
-// ==============================
+// =============================
+// PRODUCTOS POR CATEGORIA
+// =============================
 
 async function cargarProductosPorCategoria(id){
 
@@ -61,14 +73,27 @@ async function cargarProductosPorCategoria(id){
 }
 
 
-// ==============================
+// =============================
 // MOSTRAR PRODUCTOS
-// ==============================
+// =============================
 
 function mostrarProductos(productos){
 
     const contenedor = document.getElementById("productos");
     contenedor.innerHTML = "";
+
+    if(productos.length === 0){
+
+        contenedor.innerHTML = `
+        <div class="col-12">
+            <div class="alert alert-warning">
+                No hay productos para mostrar
+            </div>
+        </div>
+        `;
+
+        return;
+    }
 
     productos.forEach(p => {
 
@@ -107,9 +132,9 @@ function mostrarProductos(productos){
 }
 
 
-// ==============================
-// BUSCADOR DE PRODUCTOS
-// ==============================
+// =============================
+// BUSCADOR
+// =============================
 
 document.getElementById("buscador").addEventListener("keyup", function(){
 
@@ -124,20 +149,20 @@ document.getElementById("buscador").addEventListener("keyup", function(){
 });
 
 
-// ==============================
+// =============================
 // VER PRODUCTO
-// ==============================
+// =============================
 
-function verProducto(id){
+window.verProducto = function(id){
 
     window.location.href = `producto.html?id=${id}`;
 
 }
 
 
-// ==============================
-// COTIZACION DEL DOLAR
-// ==============================
+// =============================
+// COTIZACION DOLAR
+// =============================
 
 async function cargarDolar(){
 
@@ -155,10 +180,12 @@ async function cargarDolar(){
 }
 
 
-// ==============================
+// =============================
 // INICIAR APP
-// ==============================
+// =============================
 
 cargarCategorias();
 cargarProductos();
 cargarDolar();
+
+});

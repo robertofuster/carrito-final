@@ -3,33 +3,77 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Catálogo Online</title>
+<title>Tienda</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container py-4">
+<!-- NAVBAR -->
+<div id="navbar"></div>
 
-<h1 class="mb-4">Catálogo de Productos</h1>
 
-<div id="dolar" class="alert alert-info"></div>
-
-<div class="mb-3">
-<input type="text" id="buscador" class="form-control" placeholder="Buscar producto...">
+<!-- BANNER -->
+<div class="container mt-4">
+  <div class="p-5 text-center bg-white shadow rounded">
+    <h1>Bienvenido a la tienda</h1>
+    <p>Explorá nuestros productos</p>
+  </div>
 </div>
 
-<h4>Categorías</h4>
-<div id="categorias" class="mb-4"></div>
 
-<div class="row" id="productos"></div>
+<!-- DOLAR -->
+<div class="container mt-3">
+  <div id="dolar" class="alert alert-info text-center"></div>
+</div>
+
+
+<!-- BUSCADOR -->
+<div class="container mt-3">
+  <input id="buscador" class="form-control" placeholder="Buscar producto...">
+</div>
+
+
+<!-- CATEGORIAS -->
+<div class="container mt-4">
+  <h4>Categorías</h4>
+  <div id="categorias"></div>
+</div>
+
+
+<!-- PRODUCTOS -->
+<div class="container mt-4">
+
+<h3>Productos</h3>
+
+<div id="productos" class="row"></div>
 
 </div>
 
+
+<!-- LOADER -->
+<div id="loader" class="loader d-none">
+  <div class="spinner-border text-primary"></div>
+</div>
+
+
+<!-- TOAST -->
+<div id="toastGlobal"
+     class="toast position-fixed bottom-0 end-0 m-3"></div>
+
+
+<!-- SCRIPTS -->
+<script src="js/auth.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/toast.js"></script>
 <script src="js/app.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const categoryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
 const externalRoutes = require('./routes/externalRoutes');
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'API Catalogo Online funcionando' });
 });
 
+app.use("/api/users", userRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/uploads', express.static('uploads'));

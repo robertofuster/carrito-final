@@ -1,10 +1,14 @@
 const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
-const productController = require('../controllers/productController');
-const adminMiddleware = require('../middlewares/adminMiddleware');
-const upload = require('../middlewares/uploadMiddleware');
 
+const productController = require('../controllers/productController');
+const upload = require('../middlewares/uploadMiddleware');
+const authMiddleware = require("../middlewares/authMiddleware");
+const roleMiddleware = require("../middlewares/roleMiddleware");
+
+
+// VALIDACIONES
 const validateProduct = [
   body('name')
     .notEmpty()
@@ -19,8 +23,34 @@ const validateProduct = [
     .withMessage('La categoría es obligatoria')
 ];
 
-router.post('/', adminMiddleware, upload.single('image'), validateProduct, productController.createProduct);
-router.get('/', productController.getProducts);
-router.get('/category/:id', productController.getProductsByCategory);
+
+// =========================
+// RUTAS
+// =========================
+
+// CREAR PRODUCTO (solo admin)
+router.post(
+  "/",
+  authMiddleware,
+  roleMiddleware("admin"),
+  upload.single("image"),
+  validateProduct,
+  productController.createProduct
+);
+
+// OBTENER PRODUCTOS
+router.get("/", productController.getProducts);
+
+// ELIMINAR PRODUCTO (solo admin)
+router.delete(
+  "/:id",
+  authMiddleware,
+  roleMiddleware("admin"),
+  productController.deleteProduct
+);
+
+// FILTRAR POR CATEGORIA
+router.get("/category/:id", productController.getProductsByCategory);
+
 
 module.exports = router;
